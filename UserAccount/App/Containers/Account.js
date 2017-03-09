@@ -34,6 +34,8 @@ class Account extends Component {
     super(props);
     this.state = {
       onSubmit: false,
+      email: 'myemail@gmail',
+      phoneNo: '0905123456',
     }
   }
 
@@ -91,16 +93,12 @@ class Account extends Component {
   }
 
   renderAvatar() {
-    username= 'Andrea Ana'
     return (
       <View style={styles.avatarBackground}>
         <View style={styles.avatarView}>
           <Avatar 
             setImage={ this.setImage.bind(this)}
             image={require('../Assets/img/default.png')} />
-        <Text style={styles.username}>
-            {username}
-        </Text>
         </View>
       </View>
     );
@@ -111,8 +109,16 @@ class Account extends Component {
     phoneNo = '090556532';
     return (
         <View style={styles.info}>
-          <Inforow content={email} />
-          <Inforow content={phoneNo}/>
+          <Inforow 
+            content={email} 
+            icon= 'ios-mail-outline'
+            value = {this.state.email || ''}
+          />
+          <Inforow 
+            content={phoneNo} 
+            icon= 'ios-call-outline'
+            value = {this.state.phoneNo || ''}
+          />
         </View>
     );
   }
