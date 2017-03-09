@@ -1,0 +1,9 @@
+// A list of all actions in the system.
+export default {
+ STARTUP: 'STARTUP',
+ LOGIN: 'LOGIN',
+ LOGOUT: 'LOGOUT',
+ REGISTER: 'REGISTER',
+ UPDATE_USER_SUCCESS: 'UPDATE_USER_SUCCESS',
+ UPDATE_USER_FAILURE: 'UPDATE_USER_FAILURE',
+};

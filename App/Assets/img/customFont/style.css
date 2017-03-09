@@ -1,0 +1,51 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?1jmf84');
+  src:  url('fonts/icomoon.eot?1jmf84#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?1jmf84') format('truetype'),
+    url('fonts/icomoon.woff?1jmf84') format('woff'),
+    url('fonts/icomoon.svg?1jmf84#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-ic_userbackground:before {
+  content: "\e907";
+}
+.icon-ic_account:before {
+  content: "\e900";
+}
+.icon-ic_confirmpassword_resetpass:before {
+  content: "\e901";
+}
+.icon-ic_password_resetpass:before {
+  content: "\e902";
+}
+.icon-ic_password:before {
+  content: "\e903";
+}
+.icon-ic_report:before {
+  content: "\e904";
+}
+.icon-ic_review:before {
+  content: "\e905";
+}
+.icon-ic_username:before {
+  content: "\e906";
+}
+
