@@ -22,6 +22,7 @@ import {Colors,Font} from '../Themes';
 import Actions from '../Actions/Creators';
 import { Actions as NavActions } from 'react-native-router-flux';
 import I18n from '../I18n/I18n';
+import NavBar from '../Navigation/NavBar';
 import Avatar from '../Components/Avatar';
 import UploadImage from '../Services/UploadImage';
 
@@ -109,13 +110,41 @@ class Account extends Component {
     email = 'example@gmail.com';
     phoneNo = '090556532';
     return (
-      <View style={styles.info}>
-        <Inforow content={email} />
-        <Inforow content={phoneNo}/>
+      <View style={styles.container}>
+          {this.renderNav()}  
+        <View style={styles.info}>
+          <Inforow content={email} />
+          <Inforow content={phoneNo}/>
+        </View>
       </View>
     );
   }
- 
+ renderNav () {
+    const titleNav = {
+      text: 'account',
+      color: Colors.title
+    };
+    const rightNav = {
+      iconIonicon: 'md-log-out',
+      color: Colors.title,
+      onRight: () => {
+        this.showSignOutPopup();
+      }
+    };
+    const leftNav = {
+      iconIonicon : 'md-checkmark',
+      onLeft: () => {
+        this.addInformation();
+      }
+    };
+    return (
+      <NavBar 
+        right={rightNav} 
+        title={titleNav} 
+        left={leftNav}
+      />
+    );
+  }
   render() {
     return (
       <View style={styles.container}>

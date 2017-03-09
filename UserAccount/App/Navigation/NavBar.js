@@ -1,14 +1,14 @@
-import React,{ Component } from 'react'
+import React,{ Component, PropTypes } from 'react'
 import { TouchableHighlight, Text, Image, View, Platform } from 'react-native'
 import styles from './style/NavigationStyle'
-import Icon from 'react-native-vector-icons/icomoon';
 import IconIonicon from 'react-native-vector-icons/Ionicons';
 import {Fonts ,Metrics, Colors } from '../Themes/index'
 import { Actions as NavActions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
 // I18n
+import I18n from '../I18n/I18n'
 
-export default class NavButton extends Component {
-
+class NavButton extends Component {
 
   componentWillMount() {
     let numbersButtonPerPosition = 1;
@@ -35,21 +35,23 @@ export default class NavButton extends Component {
   }
 
   renderLeft() {
+    const { translation } = this.props;
+    const { color, text, icon, iconIonicon } = this.props.left;
     let components = Array.isArray(this.props.left)? this.props.left.map((data, index) => {
       return (
         <TouchableHighlight key={index} style={{marginLeft: index == 0?0: 5}} underlayColor='transparent' style={styles.center} onPress={this.onClickLeft.bind(this, index)}>
           <View style={styles.center}>
             {data.iconIonicon && <IconIonicon name={data.iconIonicon} size={30} style={{color: data.color}} />}
             {data.icon && <Icon name={data.icon} size={35} style={{color: data.color, marginTop: data.icon == 'close'?0:10}} />}
-            {data.text && <Text style={{color: data.color}}>{data.text}</Text>}
+            {data.text && <Text style={{color: data.color}}>{translation ? I18n.t(data.text) : data.text}</Text>}
           </View>
         </TouchableHighlight>
       )
     }) : <TouchableHighlight underlayColor='transparent' style={styles.center} onPress={this.onClickLeft.bind(this)}>
           <View style={styles.center}>
-            {this.props.left.iconIonicon && <IconIonicon name={this.props.left.iconIonicon} size={30} style={{color: this.props.left.color}} />}
-            {this.props.left.icon && <Icon name={this.props.left.icon} size={35} style={{color: this.props.left.color, marginTop: this.props.left.icon == 'close'?0:10}} />}
-            {this.props.left.text && <Text style={{color: this.props.left.color}}>{this.props.left.text}</Text>}
+            {iconIonicon && <IconIonicon name={iconIonicon} size={30} style={{color: color}} />}
+            {icon && <Icon name={icon} size={35} style={{color: color, marginTop: icon == 'close'?0:10}} />}
+            {text && <Text style={{color: color}}>{translation ? I18n.t(text) : text}</Text>}
           </View>
         </TouchableHighlight>;
     return (
@@ -58,33 +60,37 @@ export default class NavButton extends Component {
   }
 
   renderTitle() {
+    const { translation } = this.props;
+    const {text, icon, color} = this.props.title;
     return (
         <TouchableHighlight underlayColor='transparent' onPress={this.onClickTitle.bind(this)}>
           <View style={styles.center}>
-            {this.props.title.icon && <Icon name={this.props.title.icon} size={40} style={{color: this.props.title.color}} />}
-            {this.props.title.text && <Text style={[styles.text, {color: this.props.title.color}]}>{this.props.title.text}</Text>}
+            {icon && <Icon name={icon} size={40} style={{color: color}} />}
+            {text && <Text style={[styles.text, {color: color}]}>{translation ? I18n.t(text) : text}</Text>}
           </View>
         </TouchableHighlight>
     );
   }
 
   renderRight() {
+    const { translation } = this.props;
+    const { color, text, icon, iconIonicon } = this.props.right;
     let components = Array.isArray(this.props.right)? this.props.right.map((data, index) => {
       return (
         <TouchableHighlight key={index} underlayColor='transparent' style={{marginRight: index == this.props.right.length-1?0: 5}} onPress={this.onClickRight.bind(this, index)}>
           <View style={[styles.center]}>
             {data.iconIonicon && <IconIonicon name={data.iconIonicon} size={30} style={{color: data.color}} />}
             {data.icon && <Icon name={data.icon} size={35} style={{color: data.color, marginLeft: 3, marginTop: data.icon == 'close'?0:10}} />}
-            {data.text && <Text style={{color: data.color}}>{data.text}</Text>}
+            {data.text && <Text style={{color: data.color}}>{translation ? I18n.t(data.text) : data.text}</Text>}
           </View>
         </TouchableHighlight>
       )
-    }) : 
+    }) :
         <TouchableHighlight underlayColor='transparent' onPress={this.onClickRight.bind(this)}>
           <View style={[styles.center]}>
-            {this.props.right.iconIonicon && <IconIonicon name={this.props.right.iconIonicon} size={30} style={{color: this.props.right.color}} />}
-            {this.props.right.icon && <Icon name={this.props.right.icon} size={35} style={{color: this.props.right.color, marginLeft: 3, marginTop: this.props.right.icon == 'close'?0:10}} />}
-            {this.props.right.text && <Text style={{color: this.props.right.color}}>{this.props.right.text}</Text>}
+            {iconIonicon && <IconIonicon name={iconIonicon} size={30} style={{color: color}} />}
+            {icon && <Icon name={icon} size={35} style={{color: color, marginLeft: 3, marginTop: icon == 'close'?0:10}} />}
+            {text && <Text style={{color: color}}>{translation ? I18n.t(text) : text}</Text>}
           </View>
         </TouchableHighlight>;
     return (
@@ -106,8 +112,24 @@ export default class NavButton extends Component {
           <View style={[styles.right, {width: this.state.numbersButtonPerPosition*42}]}>
             { this.props.right && this.renderRight() }
           </View>
-        </View >
+        </View>
       </View>
     );
   }
 }
+
+NavButton.propTypes = {
+  translation: React.PropTypes.bool,
+}
+
+NavButton.defaultProps = {
+  translation: true
+}
+
+const mapStateToProps = (state) => {
+  return {
+    language: state.user.language
+  };
+};
+
+export default connect(mapStateToProps)(NavButton);
