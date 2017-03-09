@@ -110,13 +110,10 @@ class Account extends Component {
     email = 'example@gmail.com';
     phoneNo = '090556532';
     return (
-      <View style={styles.container}>
-          {this.renderNav()}  
         <View style={styles.info}>
           <Inforow content={email} />
           <Inforow content={phoneNo}/>
         </View>
-      </View>
     );
   }
  renderNav () {
@@ -148,6 +145,7 @@ class Account extends Component {
   render() {
     return (
       <View style={styles.container}>
+        {this.renderNav()}      
         <ScrollView style={styles.scrollView}>
           {this.renderAvatar()}
           {this.renderInfo()}
