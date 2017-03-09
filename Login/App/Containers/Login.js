@@ -16,8 +16,11 @@ import Actions from '../Actions/Creators';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import {Colors,Font} from '../Themes';
 import I18n from '../I18n/I18n';
+import FBSDK from 'react-native-fbsdk';
 import { Actions as NavActions } from 'react-native-router-flux';
-
+const {
+  LoginManager,
+} = FBSDK;
 class Startup extends Component {
 
   constructor(props) {
@@ -27,6 +30,7 @@ class Startup extends Component {
       password: '',
     };
     this.onLogin = this.onLogin.bind(this);
+    this.onLoginFB = this.onLoginFB.bind(this);
   }
 
   componentWillMount() {
@@ -45,14 +49,36 @@ class Startup extends Component {
     dispatch(Actions.login(data));
   }
 
+  onLoginFB () {
+    LoginManager.logInWithReadPermissions(['public_profile']).then(
+      function(result) {
+        if (result.isCancelled) {
+          alert('Login cancelled');
+        } else {
+          alert('Login success with permissions: '
+            +result.grantedPermissions.toString());
+        }
+      },
+      function(error) {
+        alert('Login fail with error: ' + error);
+      }
+    );
+  }
+  
   renderSocialButton() {
      return (
       <View>
-        <Icon.Button style={styles.facebook} name="facebook" backgroundColor="#3b5998">
+        <Icon.Button style={styles.facebook} name="facebook" 
+          onPress={this.onLoginFB} 
+          backgroundColor="#3b5998"
+        >
           Facebook
         </Icon.Button>
 
-        <Icon.Button style={styles.googleplus} name="google-plus" backgroundColor="#E04C42">
+        <Icon.Button style={styles.googleplus} 
+          name="google-plus" 
+          backgroundColor="#E04C42"
+        >
           Google+
         </Icon.Button>
       </View>
