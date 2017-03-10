@@ -1,0 +1,39 @@
+{
+  "name": "BaseProject",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "deploy:ios": "react-native bundle --entry-file ./index.ios.js --platform ios --bundle-output ios/main.jsbundle && fastlane beta",
+    "clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && npm cache clean",
+    "newclear": "rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf ios/build/ModuleCache/* && rm -rf node_modules/ && yarn install",
+    "android:build": "cd android && ./gradlew assembleRelease",
+    "android:install": "cd android && ./gradlew assembleRelease && ./gradlew installRelease",
+    "android:hockeyapp": "cd android && ./gradlew assembleRelease && puck -submit=auto app/build/outputs/apk/app-release.apk",
+    "android:devices": "$ANDROID_HOME/platform-tools/adb devices",
+    "android:logcat": "$ANDROID_HOME/platform-tools/adb logcat *:S ReactNative:V ReactNativeJS:V",
+    "android:shake": "$ANDROID_HOME/platform-tools/adb devices | grep '\\t' | awk '{print $1}' | sed 's/\\s//g' | xargs -I {} $ANDROID_HOME/platform-tools/adb -s {} shell input keyevent 82",
+    "createIconFont": "./node_modules/.bin/generate-icon ./App/Assets/img/customFont/style.css --componentName=icomoon --fontFamily=icomoon > ./node_modules/react-native-vector-icons/icomoon.js && cp ./App/Assets/img/customFont/icomoon.ttf ./node_modules/react-native-vector-icons/Fonts/icomoon.ttf"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "ramda": "^0.22.1",
+    "react": "~15.4.1",
+    "react-native": "0.41.0",
+    "react-native-fbsdk": "^0.5.0",
+    "react-native-i18n": "^0.1.1",
+    "react-native-router-flux": "^3.37.0",
+    "react-native-vector-icons": "^4.0.0",
+    "react-redux": "4.4.5",
+    "redux": "3.5.2",
+    "redux-persist": "^4.0.0-beta1",
+    "redux-saga": "^0.13.0",
+    "seamless-immutable": "^6.3.0"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "devDependencies": {
+    "redux-logger": "^2.7.4"
+  }
+}
