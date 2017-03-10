@@ -7,6 +7,7 @@ const getRandomInt = (min, max) => {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
 }
+
 export function formatDate (time) {
   let timeDiffMinutes = moment().diff(moment(time), 'minutes');
   let timeDiffHours = moment().diff(moment(time), 'hours');

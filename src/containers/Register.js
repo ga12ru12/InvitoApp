@@ -24,9 +24,6 @@ class Register extends Component {
     this.onRegister = this.onRegister.bind(this);
   }
 
-  componentWillMount() {
-  }
-
   onChange(data) {
     this.setState({...data});
   }
@@ -129,9 +126,9 @@ class Register extends Component {
   render() {
     return (
       <View style={styles.container}>
-            {this.renderSocialButton()}
-            {this.renderSignin()}
-            {this.renderButton()}
+        {this.renderSocialButton()}
+        {this.renderSignin()}
+        {this.renderButton()}
       </View>
     );
   }
