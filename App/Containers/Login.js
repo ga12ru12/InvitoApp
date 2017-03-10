@@ -19,6 +19,7 @@ import I18n from '../I18n/I18n';
 import FBSDK from 'react-native-fbsdk';
 import { Actions as NavActions } from 'react-native-router-flux';
 const {
+  LoginButton,
   LoginManager,
 } = FBSDK;
 class Startup extends Component {
@@ -50,7 +51,7 @@ class Startup extends Component {
   }
 
   onLoginFB () {
-    LoginManager.logInWithReadPermissions(['public_profile']).then(
+    LoginManager.logInWithReadPermissions(["public_profile"]).then(
       function(result) {
         if (result.isCancelled) {
           alert('Login cancelled');
