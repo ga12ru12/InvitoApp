@@ -2,6 +2,7 @@ import {  StyleSheet, Dimensions, PixelRatio } from 'react-native';
 import {Fonts ,Metrics, Colors, Scale } from '../../themes/index';
 const { width, height } = Dimensions.get('window');
 import AppStyle from './AppStyle';
+
 export default StyleSheet.create({
   ...AppStyle,
   inputRow:
@@ -42,10 +43,7 @@ export default StyleSheet.create({
     alignSelf: 'center',
   },
   textInput: {
-    backgroundColor: 'transparent',
-    height: 40,
-    width: (width-70),
-    marginLeft: 10,
+    height: 36,
     fontSize:Fonts.size.medium,
   },
 })

@@ -1,10 +1,8 @@
 import React from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
-  PixelRatio,
   TouchableOpacity,
   Image,
   ActivityIndicator,
@@ -14,7 +12,6 @@ import {
 import ImagePicker from 'react-native-image-picker';
 import I18n from '../i18n/I18n';
 
-defa
 export default class App extends React.PureComponent {
 
   state = {
@@ -77,8 +74,6 @@ export default class App extends React.PureComponent {
   }
 }
 
-
-false
 const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {

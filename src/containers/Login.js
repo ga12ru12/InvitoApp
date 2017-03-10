@@ -60,15 +60,13 @@ class Startup extends Component {
   }
 
   renderFacebookButton() {
-     return (
-        <Icon.Button style={styles.facebook} name="facebook"
-          onPress={this.onLoginFB}
-          backgroundColor="#3b5998"
-        >
-          Facebook
-        </Icon.Button>
-
-      );
+    return (
+      <Icon.Button style={styles.facebook} name="facebook"
+        onPress={this.onLoginFB}
+        backgroundColor="#3b5998">
+        Sign in with Facebook
+      </Icon.Button>
+    );
   }
 
   renderSignin() {
@@ -91,12 +89,11 @@ class Startup extends Component {
     );
   }
 
-  renderButton() {
+  renderButtonSignin() {
     return (
       <NormalButton
         style= {{marginTop: 36}}
         text={I18n.t('login')}
-        width= {210}
         backgroundColor='#0087FA'
         textColor='white'
         onPress={() => this.onLogin()}
@@ -116,10 +113,12 @@ class Startup extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        {this.renderFacebookButton()}
+      <View style={{flex: 1, paddingHorizontal: 13}}>
+        <View style= {{flex: 1}} />
+        <View style= {{flex: 2}}>
         {this.renderSignin()}
-        {this.renderButton()}
+        {this.renderFacebookButton()}
+        </View>
       </View>
     );
   }
