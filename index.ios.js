@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native'
-import App from './App/Setup'
+import App from './src/Setup'
 
 AppRegistry.registerComponent('BaseProject', () => App)

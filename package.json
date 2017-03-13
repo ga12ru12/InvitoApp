@@ -4,14 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "lint": "standard --verbose | snazzy",
+    "lint": "eslint src || exit 0",
     "deploy:ios": "react-native bundle --entry-file ./index.ios.js --platform ios --bundle-output ios/main.jsbundle && fastlane beta",
     "clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && npm cache clean",
-    "newclear": "rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf ios/build/ModuleCache/* && rm -rf node_modules/ && yarn add cache clean && npm i",
-    "test": "ava",
-    "test:watch": "ava --watch",
-    "coverage": "nyc ava",
-    "tron": "node_modules/.bin/reactotron",
+    "newclear": "rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf ios/build/ModuleCache/* && rm -rf node_modules/ && yarn install",
     "android:build": "cd android && ./gradlew assembleRelease",
     "android:install": "cd android && ./gradlew assembleRelease && ./gradlew installRelease",
     "android:hockeyapp": "cd android && ./gradlew assembleRelease && puck -submit=auto app/build/outputs/apk/app-release.apk",
@@ -21,13 +17,14 @@
     "createIconFont": "./node_modules/.bin/generate-icon ./App/Assets/img/customFont/style.css --componentName=icomoon --fontFamily=icomoon > ./node_modules/react-native-vector-icons/icomoon.js && cp ./App/Assets/img/customFont/icomoon.ttf ./node_modules/react-native-vector-icons/Fonts/icomoon.ttf"
   },
   "dependencies": {
-    "cache": "^1.1.2",
-    "clean": "^4.0.2",
+    "lodash": "^4.17.4",
     "ramda": "^0.22.1",
-    "react": "15.4.1",
+    "react": "~15.4.1",
     "react-native": "0.41.0",
     "react-native-fbsdk": "^0.5.0",
+    "react-native-fetch-blob": "^0.10.2",
     "react-native-i18n": "^0.1.1",
+    "react-native-image-picker": "^0.26.2",
     "react-native-router-flux": "^3.37.0",
     "react-native-vector-icons": "^4.0.0",
     "react-redux": "4.4.5",
@@ -35,41 +32,19 @@
     "redux-logger": "^2.7.4",
     "redux-persist": "^4.0.0-beta1",
     "redux-saga": "^0.13.0",
-    "remote-redux-devtools": "0.4.1",
     "seamless-immutable": "^6.3.0"
   },
   "jest": {
     "preset": "react-native"
   },
   "devDependencies": {
-    "ava": "^0.16.0",
-    "babel-eslint": "^6.1.0",
-    "babel-jest": "17.0.2",
-    "babel-preset-es2015": "^6.14.0",
-    "babel-preset-react-native": "1.9.0",
-    "enzyme": "^2.3.0",
-    "jest": "17.0.3",
-    "mockery": "^1.7.0",
-    "nyc": "^8.1.0",
-    "react-addons-test-utils": "^15.3.1",
-    "react-dom": "^15.3.1",
-    "react-native-mock": "^0.2.6",
-    "react-test-renderer": "15.4.1",
-    "reactotron-react-native": "^1.1.2",
-    "reactotron-redux": "^1.1.2",
-    "snazzy": "^4.0.1",
-    "standard": "^8.0.0"
-  },
-  "standard": {
-    "parser": "babel-eslint",
-    "globals": [
-      "describe",
-      "it",
-      "fetch",
-      "navigator",
-      "__DEV__",
-      "XMLHttpRequest",
-      "FormData"
-    ]
+    "babel-eslint": "^7.1.1",
+    "eslint": "^3.17.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-babel": "^4.1.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
+    "eslint-plugin-react-native": "^2.3.1"
   }
 }
