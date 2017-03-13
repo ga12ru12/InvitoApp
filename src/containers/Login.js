@@ -1,12 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import {
   View,
-  TextInput
+  TextInput,
+  Image,
+  Text,
 } from 'react-native';
 import { connect } from 'react-redux';
 import styles from './style/GetStartedStyle'
 import NormalButton from '../components/NormalButton';
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {Colors,Font} from '../themes';
 import I18n from '../i18n/I18n';
 import FBSDK from 'react-native-fbsdk';
@@ -59,6 +61,10 @@ class Startup extends Component {
     this.onChange( { username: e.text })
   }
 
+  onChangePassword = (e) => {
+    this.onChange( { password: e.text })
+  }
+
   renderFacebookButton() {
     return (
       <Icon.Button style={styles.facebook} name="facebook"
@@ -69,23 +75,44 @@ class Startup extends Component {
     );
   }
 
-  renderSignin() {
+  renderLogo() {
     return (
-      <View style={styles.loginWrap}>
-        <TextInput
-          style={styles.textInput}
-          placeholder={I18n.t('username')}
-          value={this.state.username}
-          onChangeText={this.onChangeUserName}
-        />
-        <TextInput
-          secureTextEntry
-          style={styles.textInput}
-          placeholder={I18n.t('password')}
-          value={ this.state.password}
-          onChangeText={ (data) => this.onChange( { password: data }) }
-        />
-      </View>
+      <Image style={styles.logo} source={require('../assets/img/Logo_enouvo_white.png')}/>
+    );
+  }
+
+  renderPassword() {
+    return (
+        <View style={styles.loginRow}>
+          <Icon style={styles.icon} name='lock' size={25}/>
+            <View style={styles.textColumn}>
+              <Text style={styles.textInfo}>Password</Text>
+              <TextInput 
+                style={styles.textInput}
+                value={this.state.password}
+                secureTextEntry
+                placeholder={I18n.t('password')}
+                onChangeText={this.onChangePassword}
+              />
+            </View>
+        </View>
+    );
+  }
+
+  renderUsername() {
+    return (
+        <View style={styles.loginRow}>
+          <Icon style={styles.icon} name='user-o' size={25}/>
+            <View style={styles.textColumn}>
+              <Text style={styles.textInfo}>Name</Text>
+              <TextInput 
+                style={styles.textInput}
+                value={this.state.username}
+                placeholder={I18n.t('enterName')}
+                onChangeText={this.onChangeUserName}
+              />
+            </View>
+        </View>
     );
   }
 
@@ -113,12 +140,10 @@ class Startup extends Component {
 
   render() {
     return (
-      <View style={{flex: 1, paddingHorizontal: 13}}>
-        <View style= {{flex: 1}} />
-        <View style= {{flex: 2}}>
-        {this.renderSignin()}
-        {this.renderFacebookButton()}
-        </View>
+      <View style={styles.container}>
+          {this.renderLogo()}
+          {this.renderUsername()}
+          {this.renderPassword()}
       </View>
     );
   }

@@ -1,4 +1,6 @@
 const colors = {
+  background: '#50D2C2', //seabluefoam
+  default: '#ffffff',
   actionText: '#3FB4CF',
   inactiveText: '#9B9B9B',
   darkText: '#032250',

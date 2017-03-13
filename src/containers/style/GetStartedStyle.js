@@ -5,45 +5,36 @@ import AppStyle from './AppStyle';
 
 export default StyleSheet.create({
   ...AppStyle,
-  inputRow:
+  logo:
     {
-      flexDirection:'row',
-      marginTop: 15,
-      width: width-20,
-      borderWidth: 1,
-      borderColor: Colors.divider,
+      alignSelf: 'center',
     },
-  facebook:
+  loginRow:
+    { 
+      flexDirection: 'row',
+      flex: 1,
+      padding: 20,
+    },
+  icon:
     {
-      justifyContent: 'center',
-      height: 40,
+      marginTop: 10,
+      color: Colors.default,
     },
-  googleplus:
+  textColumn:
     {
-      justifyContent: 'center',
-      height: 40,
+      flex: 1,
     },
-  loginWrap:
+  textInfo: 
     {
-      alignItems: 'center',
+      marginLeft: 20,
+      color: Colors.default,
+      fontSize: Fonts.size.large,
     },
-  pwRow:
+  textInput: 
     {
-      borderTopWidth: 0,
-      borderWidth: 1,
-      width: width-20,
-      borderColor: Colors.divider,
+      marginLeft: 20,
+      height: 36,
+      color: Colors.default,
+      fontSize: Fonts.size.large,
     },
-  signIn : {
-    backgroundColor: 'transparent',
-    marginTop: 15,
-    fontSize: 20,
-    fontWeight: 'bold',
-    letterSpacing: 2.1,
-    alignSelf: 'center',
-  },
-  textInput: {
-    height: 36,
-    fontSize:Fonts.size.medium,
-  },
 })
