@@ -65,16 +65,6 @@ class Startup extends Component {
     this.onChange( { password: e.text })
   }
 
-  renderFacebookButton() {
-    return (
-      <Icon.Button style={styles.facebook} name="facebook"
-        onPress={this.onLoginFB}
-        backgroundColor="#3b5998">
-        Sign in with Facebook
-      </Icon.Button>
-    );
-  }
-
   renderLogo() {
     return (
       <Image style={styles.logo} source={require('../assets/img/Logo_enouvo_white.png')}/>
