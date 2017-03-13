@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import styles from './style/GetStartedStyle'
+import styles from './style/LoginStyle'
 import NormalButton from '../Components/NormalButton';
 import Actions from '../Actions/Creators';
 import Icon from 'react-native-vector-icons/FontAwesome'

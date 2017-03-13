@@ -4,6 +4,21 @@ const { width, height } = Dimensions.get('window');
 import AppStyle from './AppStyle';
 export default StyleSheet.create({
   ...AppStyle,
+  background:
+    {
+      flex: 1,
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: Colors.seafoamBlue,
+    },
+  logoView:
+    {
+      marginTop: 50,
+      alignSelf: 'center',
+    },
   inputRow: 
     {
       flexDirection:'row',
@@ -11,16 +26,6 @@ export default StyleSheet.create({
       width: width-20,
       borderWidth: 1,
       borderColor: Colors.divider,
-    },
-  facebook:
-    {
-      justifyContent: 'center',
-      height: 40,
-    },
-  googleplus:
-    { 
-      justifyContent: 'center',
-      height: 40,
     },
   loginWrap:
     {

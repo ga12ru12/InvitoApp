@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import styles from './style/GetStartedStyle'
+import styles from './style/LoginStyle';
 import NormalButton from '../Components/NormalButton';
 import Actions from '../Actions/Creators';
 import Icon from 'react-native-vector-icons/FontAwesome'
@@ -65,26 +65,6 @@ class Startup extends Component {
       }
     );
   }
-  
-  renderSocialButton() {
-     return (
-      <View>
-        <Icon.Button style={styles.facebook} name="facebook" 
-          onPress={this.onLoginFB} 
-          backgroundColor="#3b5998"
-        >
-          Facebook
-        </Icon.Button>
-
-        <Icon.Button style={styles.googleplus} 
-          name="google-plus" 
-          backgroundColor="#E04C42"
-        >
-          Google+
-        </Icon.Button>
-      </View>
-      );
-  }
 
   renderSignin() {
     return (
@@ -124,7 +104,13 @@ class Startup extends Component {
       </View>
     );
   }
-
+  renderLogo () {
+    return (
+      <View style={styles.logoView}>
+        <Image source={require('../Assets/img/Logo_enouvo_white.png')}/>
+      </View>
+    );
+  }
   renderActivityIndicator () {
     return (
       <ActivityIndicator
@@ -137,10 +123,10 @@ class Startup extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-            {this.renderSocialButton()}
-            {this.renderSignin()}
-            {this.renderButton()}
+      <View style={styles.background}>
+          {this.renderLogo()}
+          {this.renderSignin()}
+          {this.renderButton()}
       </View>
     );
   }

@@ -23,20 +23,7 @@ export default {
     alignItems: 'center',
     justifyContent: 'center',
   },
-  lineSeparator: {
-    flex: 1,
-    height: 1,
-    backgroundColor: 'red',
-    marginHorizontal: 10
-  },
-  list: {
-    padding: 5,
-    paddingBottom: 65,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    flexWrap: 'wrap',
-    alignItems: 'flex-start',
-  },
+  
   indicator: {
     position: 'absolute',
     top: 0,
@@ -55,23 +42,5 @@ export default {
     alignItems: 'center',
     marginTop: 50,
   },
-  buttonText : {
-    fontSize : 16,
-    fontWeight : 'normal',
-    color: 'white'
-  },
-  nameLocation: {
-    alignItems:'center',
-    marginTop: 10
-  },
-  appName: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    letterSpacing:3,
-    color: '#3d3d3d',
-    marginTop: 25,
-    marginBottom: 15,
-    alignSelf:'center',
-    backgroundColor:'transparent'
-  },
+  
 }
