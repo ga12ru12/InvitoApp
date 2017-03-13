@@ -1,40 +1,43 @@
-import {  StyleSheet, Dimensions, PixelRatio } from 'react-native';
-import {Fonts ,Metrics, Colors, Scale } from '../../themes/index';
-const { width, height } = Dimensions.get('window');
-import AppStyle from './AppStyle';
+import { StyleSheet, Dimensions } from 'react-native';
+import { Fonts, Colors } from '../../themes/index';
+
+const { width } = Dimensions.get('window');
 
 export default StyleSheet.create({
-  ...AppStyle,
-  logo:
-    {
-      alignSelf: 'center',
-    },
-  loginRow:
-    { 
-      flexDirection: 'row',
-      flex: 1,
-      padding: 20,
-    },
-  icon:
-    {
-      marginTop: 10,
-      color: Colors.default,
-    },
-  textColumn:
-    {
-      flex: 1,
-    },
-  textInfo: 
-    {
-      marginLeft: 20,
-      color: Colors.default,
-      fontSize: Fonts.size.large,
-    },
-  textInput: 
-    {
-      marginLeft: 20,
-      height: 36,
-      color: Colors.default,
-      fontSize: Fonts.size.large,
-    },
-})
+  inputRow: {
+    flexDirection: 'row',
+    marginTop: 15,
+    width: width - 20,
+    borderWidth: 1,
+    borderColor: Colors.divider,
+  },
+  facebook: {
+    justifyContent: 'center',
+    height: 40,
+  },
+  googleplus: {
+    justifyContent: 'center',
+    height: 40,
+  },
+  loginWrap: {
+    alignItems: 'center',
+  },
+  pwRow: {
+    borderTopWidth: 0,
+    borderWidth: 1,
+    width: width - 20,
+    borderColor: Colors.divider,
+  },
+  signIn: {
+    backgroundColor: 'transparent',
+    marginTop: 15,
+    fontSize: 20,
+    fontWeight: 'bold',
+    letterSpacing: 2.1,
+    alignSelf: 'center',
+  },
+  textInput: {
+    height: 36,
+    fontSize: Fonts.size.medium,
+  },
+});

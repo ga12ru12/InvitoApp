@@ -1,5 +1,5 @@
-import immutablePersistenceTransform from '../services/ImmutablePersistenceTransform'
-import { AsyncStorage } from 'react-native'
+import { AsyncStorage } from 'react-native';
+import immutablePersistenceTransform from '../utils/ImmutablePersistenceTransform';
 
 const REDUX_PERSIST = {
   active: true,
@@ -7,8 +7,8 @@ const REDUX_PERSIST = {
   storeConfig: {
     storage: AsyncStorage,
     whiteList: ['user'],
-    transforms: [immutablePersistenceTransform]
-  }
-}
+    transforms: [immutablePersistenceTransform],
+  },
+};
 
-export default REDUX_PERSIST
+export default REDUX_PERSIST;
