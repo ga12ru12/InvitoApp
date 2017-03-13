@@ -5,6 +5,6 @@ const colors = {
   lightText: '#7F91A7',
   cellBorder: '#EEEEEE',
   darkBackground: '#183E63',
-}
+};
 
-export default colors
+export default colors;

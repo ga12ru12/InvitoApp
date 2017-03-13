@@ -25,7 +25,7 @@ I18n.translations = {
     password: 'Mật khẩu',
     resetPW: 'Thay đổi mật khẩu',
     connectErr: 'Lỗi kết nối',
-  }
+  },
 };
 
 export default I18n;

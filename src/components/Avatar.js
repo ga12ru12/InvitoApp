@@ -1,25 +1,22 @@
 import React from 'react';
 import {
   StyleSheet,
-  Text,
   View,
   TouchableOpacity,
   Image,
-  ActivityIndicator,
-  Dimensions,
-  Platform
+  Platform,
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import I18n from '../i18n/I18n';
 
-export default class App extends React.PureComponent {
+export default class Avatar extends React.PureComponent {
 
   state = {
     avatarSource: this.props.image,
     isUpload: false,
   };
 
-  selectPhotoTapped() {
+  selectPhotoTapped = () => {
     const options = {
       title: I18n.t('selectAvatar'),
       cancelButtonTitle: I18n.t('cancel'),
@@ -29,26 +26,21 @@ export default class App extends React.PureComponent {
       quality: 1.0,
       maxWidth: 150,
       maxHeight: 150,
-    }
+    };
 
     ImagePicker.showImagePicker(options, (response) => {
-
+      let source;
       if (response.didCancel) {
         // console.log('User cancelled photo picker');
-      }
-      else if (response.error) {
+      } else if (response.error) {
         // console.log('ImagePicker Error: ', response.error);
-      }
-      else if (response.customButton) {
+      } else if (response.customButton) {
         // console.log('User tapped custom button: ', response.customButton);
-      }
-      else {
-        var source;
+      } else {
         if (Platform.OS === 'ios') {
-          source = {uri: response.uri.replace('file://', ''), isStatic: true};
-        }
-        else {
-          source = {uri: response.uri, isStatic: true};
+          source = { uri: response.uri.replace('file://', ''), isStatic: true };
+        } else {
+          source = { uri: response.uri, isStatic: true };
         }
         this.props.setImage(source);
         this.setState({
@@ -60,13 +52,13 @@ export default class App extends React.PureComponent {
 
   render() {
     return (
-      <View style={[styles.container, this.props.style]}>
-        <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
+      <View style={[styles.container]}>
+        <TouchableOpacity onPress={this.selectPhotoTapped}>
           <View style={[styles.avatarContainer]}>
             <Image
               style={styles.avatar}
-              source={Platform.OS==='ios'?this.state.avatarSource:{uri:this.state.avatarSource.url}}>
-            </Image>
+              source={this.state.avatarSource}
+            />
           </View>
         </TouchableOpacity>
       </View>
@@ -74,11 +66,15 @@ export default class App extends React.PureComponent {
   }
 }
 
-const { width, height } = Dimensions.get('window');
+Avatar.propTypes = {
+  image: React.PropTypes.string.isRequired,
+  setImage: React.PropTypes.func.isRequired,
+};
+
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
-    backgroundColor:'transparent',
+    backgroundColor: 'transparent',
   },
   avatarContainer: {
     borderColor: '#9B9B9B',
@@ -101,6 +97,6 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'white',
-    backgroundColor: 'transparent'
-  }
+    backgroundColor: 'transparent',
+  },
 });

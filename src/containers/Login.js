@@ -1,22 +1,25 @@
 import React, { Component, PropTypes } from 'react';
 import {
   View,
-  TextInput
+  TextInput,
 } from 'react-native';
-import { connect } from 'react-redux';
-import styles from './style/GetStartedStyle'
-import NormalButton from '../components/NormalButton';
-import Icon from 'react-native-vector-icons/FontAwesome'
-import {Colors,Font} from '../themes';
-import I18n from '../i18n/I18n';
-import FBSDK from 'react-native-fbsdk';
-const {
-  LoginButton,
+import {
   LoginManager,
-  AccessToken
-} = FBSDK;
+  AccessToken,
+} from 'react-native-fbsdk';
+import { connect } from 'react-redux';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import styles from './style/GetStartedStyle';
+import NormalButton from '../components/NormalButton';
+import I18n from '../i18n/I18n';
 
 class Startup extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func,
+    fetching: PropTypes.bool,
+    attemptLogin: PropTypes.func,
+  }
 
   state = {
     username: '',
@@ -27,13 +30,13 @@ class Startup extends Component {
   }
 
   onChange(data) {
-    this.setState({...data});
+    this.setState( {...data} );
   }
 
   onLogin = () => {
     let data = {
       username: this.state.username,
-      password: this.state.password
+      password: this.state.password,
     };
     this.props.login(data);
   }
@@ -42,14 +45,13 @@ class Startup extends Component {
     LoginManager.logInWithReadPermissions(["public_profile"]).then(
       (result) => {
         if (result.isCancelled) {
-          alert('Login cancelled');
+          console.log('Login cancelled');
         } else {
-          alert('Login success with permissions: '
-            +result.grantedPermissions.toString());
+          console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
         }
       },
       (error) => {
-        alert('Login fail with error: ' + error);
+        console.log('Login fail with error: ' + error);
       }
     );
     AccessToken.getCurrentToken()
@@ -92,10 +94,10 @@ class Startup extends Component {
   renderButtonSignin() {
     return (
       <NormalButton
-        style= {{marginTop: 36}}
-        text={I18n.t('login')}
-        backgroundColor='#0087FA'
-        textColor='white'
+        style= {{ marginTop: 36 }}
+        text={I18n.t("login")}
+        backgroundColor="#0087FA"
+        textColor="white"
         onPress={() => this.onLogin()}
       />
     );
@@ -104,9 +106,9 @@ class Startup extends Component {
   renderActivityIndicator () {
     return (
       <ActivityIndicator
-         animating={true}
-         style={styles.indicator}
-         size="large"
+        animating={true}
+        style={styles.indicator}
+        size="large"
       />
     )
   }

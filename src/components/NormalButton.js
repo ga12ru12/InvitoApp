@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   Text,
   View,
   TouchableHighlight,
-  StyleSheet
+  StyleSheet,
 } from 'react-native';
 
 export default function NormalButton(props) {
-
-  return(
-    <TouchableHighlight style={[props.style,{width:props.width,alignSelf:'center'}]} underlayColor='transparent' onPress={props.onPress}>
+  return (
+    <TouchableHighlight style={[props.style, { width:props.width, alignSelf:'center' }]} underlayColor='transparent' onPress={props.onPress}>
       <View style={[styles.mainView,{backgroundColor:props.backgroundColor,width:props.width}]}>
         <Text style={[styles.text,{color:props.textColor}]}>{props.text || 'Login in'}</Text>
       </View>
