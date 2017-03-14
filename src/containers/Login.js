@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import {
   View,
   TextInput,
@@ -7,16 +7,14 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
-import styles from './style/GetStartedStyle'
-import NormalButton from '../components/NormalButton';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {Colors,Font} from '../themes';
-import I18n from '../i18n/I18n';
 import FBSDK from 'react-native-fbsdk';
+import styles from './style/GetStartedStyle';
+import { Images } from '../themes';
+import I18n from '../i18n/I18n';
+
 const {
-  LoginButton,
   LoginManager,
-  AccessToken
 } = FBSDK;
 
 class Startup extends Component {
@@ -30,46 +28,39 @@ class Startup extends Component {
   }
 
   onChange(data) {
-    this.setState({...data});
+    this.setState({ ...data });
   }
 
   onLogin = () => {
-    let data = {
+    const data = {
       username: this.state.username,
-      password: this.state.password
+      password: this.state.password,
     };
     this.props.login(data);
   }
 
   onLoginFB = () => {
-    LoginManager.logInWithReadPermissions(["public_profile"]).then(
+    LoginManager.logInWithReadPermissions(['public_profile']).then(
       (result) => {
         if (result.isCancelled) {
-          alert('Login cancelled');
+          console.log('cancelled')
         } else {
-          alert('Login success with permissions: '
-            +result.grantedPermissions.toString());
+          console.log('success')
         }
       },
       (error) => {
-        alert('Login fail with error: ' + error);
-      }
+        console.log('Login fail with error: ' + error);
+      },
     );
     AccessToken.getCurrentToken()
   }
 
   onChangeUserName = (e) => {
-    this.onChange( { username: e.text })
+    this.onChange({ username: e.text });
   }
 
   onChangePassword = (e) => {
-    this.onChange( { password: e.text })
-  }
-
-  renderLogo() {
-    return (
-      <Image style={styles.logo} source={require('../assets/img/Logo_enouvo_white.png')}/>
-    );
+    this.onChange({ password: e.text });
   }
 
   renderPassword() {
@@ -78,7 +69,7 @@ class Startup extends Component {
           <Icon style={styles.icon} name='lock' size={25}/>
             <View style={styles.textColumn}>
               <Text style={styles.textInfo}>Password</Text>
-              <TextInput 
+              <TextInput
                 style={styles.textInput}
                 value={this.state.password}
                 secureTextEntry
@@ -92,24 +83,23 @@ class Startup extends Component {
 
   renderUsername() {
     return (
-        <View style={styles.loginRow}>
-          <Icon style={styles.icon} name='user-o' size={25}/>
-            <View style={styles.textColumn}>
-              <Text style={styles.textInfo}>Name</Text>
-              <TextInput 
-                style={styles.textInput}
-                value={this.state.username}
-                placeholder={I18n.t('enterName')}
-                onChangeText={this.onChangeUserName}
-              />
-            </View>
-
-          <View style={styles.separator}/>
+      <View style={styles.loginRow}>
+        <Icon style={styles.icon} name="user-o" size={25} />
+        <View style={styles.textColumn}>
+          <Text style={styles.textInfo}>Name</Text>
+          <TextInput
+            style={styles.textInput}
+            value={this.state.username}
+            placeholder={I18n.t('enterName')}
+            onChangeText={this.onChangeUserName}
+          />
         </View>
+        <View style={styles.separator} />
+      </View>
     );
   }
 
-  renderSigninButton () {
+  renderSigninButton() {
     return (
       <TouchableOpacity style={styles.loginButton}>
         <Text style={styles.textSignin}>
@@ -119,7 +109,7 @@ class Startup extends Component {
     );
   }
 
-  renderSignupButton () {
+  renderSignupButton() {
     return (
       <View style={styles.sigunUpLine}>
         <Text style={styles.signupText}>
@@ -131,25 +121,15 @@ class Startup extends Component {
       </View>
     );
   }
-  
-  renderActivityIndicator () {
-    return (
-      <ActivityIndicator
-         animating={true}
-         style={styles.indicator}
-         size="large"
-      />
-    );
-  }
 
   render() {
     return (
       <View style={styles.container}>
-          {this.renderLogo()}
-          {this.renderUsername()}
-          {this.renderPassword()}
-          {this.renderSigninButton()}
-          {this.renderSignupButton()}
+        <Image style={styles.logo} source={Images.logo} />
+        {this.renderUsername()}
+        {this.renderPassword()}
+        {this.renderSigninButton()}
+        {this.renderSignupButton()}
       </View>
     );
   }
@@ -157,14 +137,14 @@ class Startup extends Component {
 
 function mapStateToProps(state) {
   return {
-    logining: state.user.isLogin
+    logining: state.user.isLogin,
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     login: (username, password) => dispatch(Actions.login(username, password)),
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Startup);
