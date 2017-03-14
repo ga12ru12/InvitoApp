@@ -11,11 +11,12 @@ I18n.translations = {
     logout: 'LOG OUT',
     messageLogout: 'Are you sure you want to log out?',
     enterName: 'Enter name',
-    password: 'Password',
+    password: 'Enter Password',
     resetPW: 'Reset Password',
     connectErr: 'Connection Error',
     noAccount: "DON'T HAVE ACCOUNT?",
     signUp: 'SIGN UP',
+    loginFB: 'LOGIN VIA FACEBOOK',
   },
 
   vi: {
@@ -29,6 +30,7 @@ I18n.translations = {
     connectErr: 'Lỗi kết nối',
     noAccount: 'Chưa có tài khoản?',
     signUp: 'ĐĂNG KÍ',
+    loginFB: 'Đăng nhập bằng Facebook',
   },
 };
 

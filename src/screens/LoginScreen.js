@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FBSDK from 'react-native-fbsdk';
 import styles from './style/LoginStyle';
+import InputRow from '../components/Input';
 import { Images } from '../themes';
 import I18n from '../i18n/I18n';
 
@@ -65,37 +66,23 @@ class Startup extends Component {
 
   renderPassword() {
     return (
-        <View style={styles.loginRow}>
-          <Icon style={styles.icon} name='lock' size={25}/>
-            <View style={styles.textColumn}>
-              <Text style={styles.textInfo}>Password</Text>
-              <TextInput
-                style={styles.textInput}
-                value={this.state.password}
-                secureTextEntry
-                placeholder={I18n.t('password')}
-                onChangeText={this.onChangePassword}
-              />
-            </View>
-        </View>
+      <InputRow
+        type="PASSWORD"
+        value={this.state.username}
+        placeholder={I18n.t('password')}
+        onChangeText={this.onChangeUserName}
+      />
     );
   }
 
   renderUsername() {
     return (
-      <View style={styles.loginRow}>
-        <Icon style={styles.icon} name="user-o" size={25} />
-        <View style={styles.textColumn}>
-          <Text style={styles.textInfo}>Name</Text>
-          <TextInput
-            style={styles.textInput}
-            value={this.state.username}
-            placeholder={I18n.t('enterName')}
-            onChangeText={this.onChangeUserName}
-          />
-        </View>
-        <View style={styles.separator} />
-      </View>
+      <InputRow
+        type="NAME"
+        value={this.state.username}
+        placeholder={I18n.t('enterName')}
+        onChangeText={this.onChangeUserName}
+      />
     );
   }
 
@@ -103,10 +90,20 @@ class Startup extends Component {
     return (
       <TouchableOpacity style={styles.loginButton}>
         <Text style={styles.textSignin}>
-          {I18n.t('login')}
+          {I18n.t('signin')}
         </Text>
       </TouchableOpacity>
     );
+  }
+
+  renderLoginFB() {
+   return (
+     <TouchableOpacity style={styles.loginButton}>
+       <Text style={styles.textSignin}>
+         {I18n.t('loginFB')}
+       </Text>
+     </TouchableOpacity>
+   );
   }
 
   renderSignupButton() {
@@ -130,6 +127,7 @@ class Startup extends Component {
         {this.renderPassword()}
         {this.renderSigninButton()}
         {this.renderSignupButton()}
+        {this.renderLoginFB()}
       </View>
     );
   }

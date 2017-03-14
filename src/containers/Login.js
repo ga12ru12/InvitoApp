@@ -9,6 +9,7 @@ import {
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FBSDK from 'react-native-fbsdk';
+import InputRow from '../components/Input';
 import styles from './style/GetStartedStyle';
 import { Images } from '../themes';
 import I18n from '../i18n/I18n';
@@ -83,19 +84,7 @@ class Startup extends Component {
 
   renderUsername() {
     return (
-      <View style={styles.loginRow}>
-        <Icon style={styles.icon} name="user-o" size={25} />
-        <View style={styles.textColumn}>
-          <Text style={styles.textInfo}>Name</Text>
-          <TextInput
-            style={styles.textInput}
-            value={this.state.username}
-            placeholder={I18n.t('enterName')}
-            onChangeText={this.onChangeUserName}
-          />
-        </View>
-        <View style={styles.separator} />
-      </View>
+      <InputRow type="Name" />
     );
   }
 
