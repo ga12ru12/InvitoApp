@@ -14,6 +14,8 @@ I18n.translations = {
     password: 'Password',
     resetPW: 'Reset Password',
     connectErr: 'Connection Error',
+    noAccount: "DON'T HAVE ACCOUNT?",
+    signUp: 'SIGN UP',
   },
 
   vi: {
@@ -25,6 +27,8 @@ I18n.translations = {
     password: 'Mật khẩu',
     resetPW: 'Thay đổi mật khẩu',
     connectErr: 'Lỗi kết nối',
+    noAccount: 'Chưa có tài khoản?',
+    signUp: 'ĐĂNG KÍ',
   },
 };
 

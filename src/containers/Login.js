@@ -4,6 +4,7 @@ import {
   TextInput,
   Image,
   Text,
+  TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
 import styles from './style/GetStartedStyle'
@@ -102,22 +103,35 @@ class Startup extends Component {
                 onChangeText={this.onChangeUserName}
               />
             </View>
+
+          <View style={styles.separator}/>
         </View>
     );
   }
 
-  renderButtonSignin() {
+  renderSigninButton () {
     return (
-      <NormalButton
-        style= {{marginTop: 36}}
-        text={I18n.t('login')}
-        backgroundColor='#0087FA'
-        textColor='white'
-        onPress={() => this.onLogin()}
-      />
+      <TouchableOpacity style={styles.loginButton}>
+        <Text style={styles.textSignin}>
+          {I18n.t('login')}
+        </Text>
+      </TouchableOpacity>
     );
   }
 
+  renderSignupButton () {
+    return (
+      <View style={styles.sigunUpLine}>
+        <Text style={styles.signupText}>
+          {I18n.t('noAccount')}
+        </Text>
+        <TouchableOpacity>
+          <Text style={styles.signup}> {I18n.t('signUp')}</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+  
   renderActivityIndicator () {
     return (
       <ActivityIndicator
@@ -125,7 +139,7 @@ class Startup extends Component {
          style={styles.indicator}
          size="large"
       />
-    )
+    );
   }
 
   render() {
@@ -134,6 +148,8 @@ class Startup extends Component {
           {this.renderLogo()}
           {this.renderUsername()}
           {this.renderPassword()}
+          {this.renderSigninButton()}
+          {this.renderSignupButton()}
       </View>
     );
   }
