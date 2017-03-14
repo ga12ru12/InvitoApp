@@ -9,8 +9,14 @@
         "react-native"
     ],
     "globals": {
-        "fetch": true,
-        "__DEV__": true
+      "describe": true,
+      "it": true,
+      "expect": true,
+      "fetch": true,
+      "navigator": true,
+      "__DEV__": true,
+      "XMLHttpRequest": true,
+      "FormData": true,
     },
     "rules": {
         // overrides

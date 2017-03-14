@@ -1,23 +1,12 @@
-import { Dimensions } from 'react-native';
+import { Dimensions, PixelRatio, Platform } from 'react-native';
 
-const { width } = Dimensions.get('window');
-const scale = width / (320);
 // Used via Metrics.baseMargin
 const metrics = {
-  icons: {
-    tiny: 15 * scale,
-    semiSmall: 20 * scale,
-    small: 25 * scale,
-    medium: 30 * scale,
-    large: 45 * scale,
-    xl: 100 * scale,
-  },
-  images: {
-    small: 20 * scale,
-    medium: 40 * scale,
-    large: 60 * scale,
-    logo: 300 * scale,
-  },
+  borderWidth: (1 / PixelRatio.getPixelSizeForLayoutSize(1)),
+  buttonPadding: 6,
+  borderRadiusBase: (Platform.OS === 'ios') ? 5 : 2,
+  fontSizeBase: 15,
+  borderRadiusLarge: 15 * 3.8,
 };
 
 export default metrics;

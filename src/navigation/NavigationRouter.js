@@ -1,41 +1,86 @@
-import React, { Component } from 'react';
-import { Alert, BackAndroid } from 'react-native';
-import { Scene, Router } from 'react-native-router-flux';
-// screens identified by the router
-import Login from '../containers/Login';
-import Register from '../containers/Register';
-import I18n from '../i18n/I18n';
+import React from 'react';
+import { Button } from 'react-native';
+import { TabNavigator, StackNavigator, NavigationActions } from 'react-navigation';
+import { Icon } from 'react-native-elements';
 
-class NavigationRouter extends Component {
+import Feed from '../screens/FeedScreen';
+import Settings from '../screens/SettingsScreen';
+import UserDetail from '../screens/UserDetailScreen';
+import Me from '../screens/MeScreen';
 
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
+const navigationAction = NavigationActions.navigate({
+  routeName: 'Profile',
+  params: {},
 
-  onExitApp = () => {
-    Alert.alert(
-      I18n.t('exitApp'),
-      null,
-      [
-        { text: I18n.t('cancel'), onPress: () => {} },
-        { text: I18n.t('yes'), onPress: () => BackAndroid.exitApp() },
-      ],
-    );
-    return true;
-  }
+  // navigate can have a nested navigate action that will be run inside the child router
+  action: NavigationActions.navigate({ routeName: 'SubProfileRoute'})
+})
 
-  render() {
-    return (
-      <Router onExitApp={this.onExitApp} hideNavBar>
-        <Scene key="root" hideNavBar>
-          <Scene initial key="login" component={Login} />
-          <Scene key="register" component={Register} />
-        </Scene>
-      </Router>
-    );
-  }
-}
+export const FeedStack = StackNavigator({
+  Feed: {
+    screen: Feed,
+    headerMode: 'none',
+    navigationOptions: {
+      title: 'Feed',
+    },
+  },
+  Details: {
+    screen: UserDetail,
+    navigationOptions: {
+      title: 'Profile',
 
-export default NavigationRouter;
+      header: ({ dispatch }) => ({
+        // Render a button on the right side of the header
+        // When pressed switches the screen to edit mode.
+        right: (
+          <Button
+            title="Edit"
+            onPress={() =>console.log(dispatch)}
+          />
+        ),
+      }),
+    },
+  },
+});
+
+export const Tabs = TabNavigator({
+  Feed: {
+    screen: FeedStack,
+    navigationOptions: {
+      tabBar: {
+        label: 'Feed',
+        icon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />,
+      },
+    },
+  },
+  Me: {
+    screen: Me,
+    navigationOptions: {
+      tabBar: {
+        label: 'Me',
+        icon: ({ tintColor }) => <Icon name="account-circle" size={35} color={tintColor} />,
+      },
+    },
+  },
+});
+
+export const SettingsStack = StackNavigator({
+  Settings: {
+    screen: Settings,
+    navigationOptions: {
+      title: 'Settings',
+    },
+  },
+});
+
+export const Root = StackNavigator({
+  Tabs: {
+    screen: Tabs,
+  },
+  Settings: {
+    screen: SettingsStack,
+  },
+}, {
+  mode: 'modal',
+  headerMode: 'none',
+});
