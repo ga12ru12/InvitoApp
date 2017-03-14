@@ -12,6 +12,7 @@ import FBSDK from 'react-native-fbsdk';
 import styles from './style/LoginStyle';
 import { Images } from '../themes';
 import I18n from '../i18n/I18n';
+import LoginActions from '../redux/LoginRedux/actions';
 
 const {
   LoginManager,
@@ -101,7 +102,7 @@ class Startup extends Component {
 
   renderSigninButton() {
     return (
-      <TouchableOpacity style={styles.loginButton}>
+      <TouchableOpacity style={styles.loginButton} onPress={this.onLogin}>
         <Text style={styles.textSignin}>
           {I18n.t('login')}
         </Text>
@@ -137,13 +138,13 @@ class Startup extends Component {
 
 function mapStateToProps(state) {
   return {
-    logining: state.user.isLogin,
+    isLogin: state.user.isLogin,
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: (username, password) => dispatch(Actions.login(username, password)),
+    login: (username, password) => dispatch(LoginActions.login(username, password)),
   };
 };
 

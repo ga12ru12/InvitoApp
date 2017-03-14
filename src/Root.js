@@ -12,14 +12,13 @@ class Base extends Component {
 
   render() {
     return (
-        <Root />
+      <Root />
     );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    isLogin: state.user.isLogin,
   };
 };
 

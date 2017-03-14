@@ -1,11 +1,11 @@
 import { takeLatest } from 'redux-saga';
 /* ------------- Types ------------- */
 
-import { LoginTypes } from './UserRedux/actions';
+import { LoginTypes } from './LoginRedux/actions';
 
 /* ------------- Sagas ------------- */
 
-import { login } from './UserRedux/saga';
+import { login } from './LoginRedux/saga';
 
 /* ------------- Connect Types To Sagas ------------- */
 export default function* root() {
