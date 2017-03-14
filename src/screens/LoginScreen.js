@@ -68,7 +68,7 @@ class Startup extends Component {
     return (
       <InputRow
         type="PASSWORD"
-        sectureTextEntry
+        secureTextEntry
         value={this.state.password}
         placeholder={I18n.t('password')}
         onChangeText={this.onChangePassword}

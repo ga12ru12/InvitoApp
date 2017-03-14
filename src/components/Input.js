@@ -2,7 +2,6 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { View, StyleSheet, Dimensions, TextInput, Text } from 'react-native';
 import { Colors, Fonts } from '../themes';
-import I18n from '../i18n/I18n';
 
 const { width } = Dimensions.get('window');
 const Input = (props) => {
