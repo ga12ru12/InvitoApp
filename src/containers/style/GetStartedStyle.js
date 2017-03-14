@@ -14,31 +14,6 @@ export default StyleSheet.create({
     marginTop: 40,
     alignSelf: 'center',
   },
-  loginRow: {
-    flexDirection: 'row',
-    padding: 20,
-  },
-  icon: {
-    marginTop: 10,
-    color: Colors.default,
-  },
-  textInfo: {
-    marginLeft: 20,
-    color: Colors.default,
-    fontSize: Fonts.size.large,
-  },
-  textInput: {
-    marginLeft: 20,
-    height: 36,
-    width,
-    color: Colors.default,
-    fontSize: Fonts.size.large,
-  },
-  separator: {
-    height: 2,
-    width,
-    backgroundColor: Colors.default,
-  },
   loginButton: {
     marginTop: 20,
     alignSelf: 'center',
