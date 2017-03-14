@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
   View,
-  TextInput,
   Image,
   Text,
   TouchableOpacity,
@@ -9,6 +8,7 @@ import {
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FBSDK from 'react-native-fbsdk';
+import { NavigationActions } from 'react-navigation';
 import styles from './style/LoginStyle';
 import InputRow from '../components/Input';
 import { Images } from '../themes';
@@ -26,7 +26,10 @@ class Startup extends Component {
     password: '',
   }
 
-  componentWillMount() {
+  componentWillReceiveProps(newProps) {
+    if (newProps.isLogined) {
+      this.reset('Tabs');
+    }
   }
 
   onChange(data) {
@@ -57,12 +60,22 @@ class Startup extends Component {
     AccessToken.getCurrentToken()
   }
 
-  onChangeUserName = (e) => {
-    this.onChange({ username: e.text });
+  onChangeUserName = (text) => {
+    this.onChange({ username: text });
   }
 
-  onChangePassword = (e) => {
-    this.onChange({ password: e.text });
+  onChangePassword = (text) => {
+    this.onChange({ password: text });
+  }
+
+  reset = (route) => {
+    const resetAction = NavigationActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({ routeName: route }),
+      ],
+    });
+    this.props.navigation.dispatch(resetAction);
   }
 
   renderPassword() {
@@ -99,13 +112,13 @@ class Startup extends Component {
   }
 
   renderLoginFB() {
-   return (
-     <TouchableOpacity style={styles.loginButton}>
-       <Text style={styles.textSignin}>
-         {I18n.t('loginFB')}
-       </Text>
-     </TouchableOpacity>
-   );
+    return (
+      <TouchableOpacity style={styles.loginButton}>
+        <Text style={styles.textSignin}>
+          {I18n.t('loginFB')}
+        </Text>
+      </TouchableOpacity>
+    );
   }
 
   renderSignupButton() {
@@ -137,7 +150,7 @@ class Startup extends Component {
 
 function mapStateToProps(state) {
   return {
-    isLogin: state.user.isLogin,
+    isLogined: state.user.isLogined,
   };
 }
 
