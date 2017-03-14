@@ -13,10 +13,7 @@ const Input = (props) => {
         <Text style={styles.textInfo}>{props.type}</Text>
         <TextInput
           style={styles.textInput}
-          value={props.value}
-          placeholder={props.placeholder}
-          onChange={event => props.onChangeText
-            && props.onChangeText(event.nativeEvent.text)}
+          {...props}
         />
       </View>
     </View>

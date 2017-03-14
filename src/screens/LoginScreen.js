@@ -68,9 +68,10 @@ class Startup extends Component {
     return (
       <InputRow
         type="PASSWORD"
-        value={this.state.username}
+        sectureTextEntry
+        value={this.state.password}
         placeholder={I18n.t('password')}
-        onChangeText={this.onChangeUserName}
+        onChangeText={this.onChangePassword}
       />
     );
   }
