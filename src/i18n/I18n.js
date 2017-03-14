@@ -10,10 +10,12 @@ I18n.translations = {
     login: 'LOG IN',
     logout: 'LOG OUT',
     messageLogout: 'Are you sure you want to log out?',
-    username: 'User name',
+    enterName: 'Enter name',
     password: 'Password',
     resetPW: 'Reset Password',
     connectErr: 'Connection Error',
+    noAccount: "DON'T HAVE ACCOUNT?",
+    signUp: 'SIGN UP',
   },
 
   vi: {
@@ -21,10 +23,12 @@ I18n.translations = {
     login: 'ĐĂNG NHẬP',
     logout: 'ĐĂNG XUẤT',
     messageLogout: 'Bạn có chắc là muốn đăng xuất?',
-    username: 'Tên người dùng',
+    enterName: 'Nhập tên',
     password: 'Mật khẩu',
     resetPW: 'Thay đổi mật khẩu',
     connectErr: 'Lỗi kết nối',
+    noAccount: 'Chưa có tài khoản?',
+    signUp: 'ĐĂNG KÍ',
   },
 };
 

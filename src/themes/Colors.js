@@ -6,6 +6,8 @@ const colors = {
   success: '#5cb85c',
   danger: '#d9534f',
   warning: '#f0ad4e',
+  background: '#50D2C2',
+  default: '#ffffff',
   actionText: '#3FB4CF',
   inactiveText: '#9B9B9B',
   darkText: '#032250',

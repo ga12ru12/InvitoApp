@@ -8,25 +8,37 @@ import {
 
 export default function NormalButton(props) {
   return (
-    <TouchableHighlight style={[props.style, { width:props.width, alignSelf:'center' }]} underlayColor='transparent' onPress={props.onPress}>
-      <View style={[styles.mainView,{backgroundColor:props.backgroundColor,width:props.width}]}>
-        <Text style={[styles.text,{color:props.textColor}]}>{props.text || 'Login in'}</Text>
+    <TouchableHighlight
+      style={{ width: props.width, alignSelf: 'center' }}
+      underlayColor={'transparent'} onPress={props.onPress}
+    >
+      <View
+        style={[styles.mainView, { backgroundColor: props.backgroundColor, width: props.width }]}
+      >
+        <Text style={[styles.text, { color: props.textColor }]}>{props.text || 'Login in' }</Text>
       </View>
-    </TouchableHighlight>
-  )
+    </TouchableHighlight>);
 }
 
+NormalButton.propTypes = {
+  width: React.PropTypes.number.isRequired,
+  backgroundColor: React.PropTypes.string.isRequired,
+  textColor: React.PropTypes.string.isRequired,
+  text: React.PropTypes.string.isRequired,
+  onPress: React.PropTypes.func.isRequired,
+};
+
 const styles = StyleSheet.create({
-  mainView : {
+  mainView: {
     alignItems: 'center',
-    justifyContent:'center',
+    justifyContent: 'center',
     height: 40,
     borderRadius: 5,
   },
-  text : {
+  text: {
     color: 'white',
     fontSize: 14,
     fontWeight: 'bold',
     textAlign: 'center',
-  }
+  },
 });

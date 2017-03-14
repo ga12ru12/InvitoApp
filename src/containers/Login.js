@@ -1,25 +1,23 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import {
   View,
   TextInput,
+  Image,
+  Text,
+  TouchableOpacity,
 } from 'react-native';
-import {
-  LoginManager,
-  AccessToken,
-} from 'react-native-fbsdk';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import FBSDK from 'react-native-fbsdk';
 import styles from './style/GetStartedStyle';
-import NormalButton from '../components/NormalButton';
+import { Images } from '../themes';
 import I18n from '../i18n/I18n';
 
-class Startup extends Component {
+const {
+  LoginManager,
+} = FBSDK;
 
-  static propTypes = {
-    dispatch: PropTypes.func,
-    fetching: PropTypes.bool,
-    attemptLogin: PropTypes.func,
-  }
+class Startup extends Component {
 
   state = {
     username: '',
@@ -30,11 +28,11 @@ class Startup extends Component {
   }
 
   onChange(data) {
-    this.setState( {...data} );
+    this.setState({ ...data });
   }
 
   onLogin = () => {
-    let data = {
+    const data = {
       username: this.state.username,
       password: this.state.password,
     };
@@ -42,85 +40,96 @@ class Startup extends Component {
   }
 
   onLoginFB = () => {
-    LoginManager.logInWithReadPermissions(["public_profile"]).then(
+    LoginManager.logInWithReadPermissions(['public_profile']).then(
       (result) => {
         if (result.isCancelled) {
-          console.log('Login cancelled');
+          console.log('cancelled')
         } else {
-          console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
+          console.log('success')
         }
       },
       (error) => {
         console.log('Login fail with error: ' + error);
-      }
+      },
     );
     AccessToken.getCurrentToken()
   }
 
   onChangeUserName = (e) => {
-    this.onChange( { username: e.text })
+    this.onChange({ username: e.text });
   }
 
-  renderFacebookButton() {
+  onChangePassword = (e) => {
+    this.onChange({ password: e.text });
+  }
+
+  renderPassword() {
     return (
-      <Icon.Button style={styles.facebook} name="facebook"
-        onPress={this.onLoginFB}
-        backgroundColor="#3b5998">
-        Sign in with Facebook
-      </Icon.Button>
+        <View style={styles.loginRow}>
+          <Icon style={styles.icon} name='lock' size={25}/>
+            <View style={styles.textColumn}>
+              <Text style={styles.textInfo}>Password</Text>
+              <TextInput
+                style={styles.textInput}
+                value={this.state.password}
+                secureTextEntry
+                placeholder={I18n.t('password')}
+                onChangeText={this.onChangePassword}
+              />
+            </View>
+        </View>
     );
   }
 
-  renderSignin() {
+  renderUsername() {
     return (
-      <View style={styles.loginWrap}>
-        <TextInput
-          style={styles.textInput}
-          placeholder={I18n.t('username')}
-          value={this.state.username}
-          onChangeText={this.onChangeUserName}
-        />
-        <TextInput
-          secureTextEntry
-          style={styles.textInput}
-          placeholder={I18n.t('password')}
-          value={ this.state.password}
-          onChangeText={ (data) => this.onChange( { password: data }) }
-        />
+      <View style={styles.loginRow}>
+        <Icon style={styles.icon} name="user-o" size={25} />
+        <View style={styles.textColumn}>
+          <Text style={styles.textInfo}>Name</Text>
+          <TextInput
+            style={styles.textInput}
+            value={this.state.username}
+            placeholder={I18n.t('enterName')}
+            onChangeText={this.onChangeUserName}
+          />
+        </View>
+        <View style={styles.separator} />
       </View>
     );
   }
 
-  renderButtonSignin() {
+  renderSigninButton() {
     return (
-      <NormalButton
-        style= {{ marginTop: 36 }}
-        text={I18n.t("login")}
-        backgroundColor="#0087FA"
-        textColor="white"
-        onPress={() => this.onLogin()}
-      />
+      <TouchableOpacity style={styles.loginButton}>
+        <Text style={styles.textSignin}>
+          {I18n.t('login')}
+        </Text>
+      </TouchableOpacity>
     );
   }
 
-  renderActivityIndicator () {
+  renderSignupButton() {
     return (
-      <ActivityIndicator
-        animating={true}
-        style={styles.indicator}
-        size="large"
-      />
-    )
+      <View style={styles.sigunUpLine}>
+        <Text style={styles.signupText}>
+          {I18n.t('noAccount')}
+        </Text>
+        <TouchableOpacity>
+          <Text style={styles.signup}> {I18n.t('signUp')}</Text>
+        </TouchableOpacity>
+      </View>
+    );
   }
 
   render() {
     return (
-      <View style={{flex: 1, paddingHorizontal: 13}}>
-        <View style= {{flex: 1}} />
-        <View style= {{flex: 2}}>
-        {this.renderSignin()}
-        {this.renderFacebookButton()}
-        </View>
+      <View style={styles.container}>
+        <Image style={styles.logo} source={Images.logo} />
+        {this.renderUsername()}
+        {this.renderPassword()}
+        {this.renderSigninButton()}
+        {this.renderSignupButton()}
       </View>
     );
   }
@@ -128,14 +137,14 @@ class Startup extends Component {
 
 function mapStateToProps(state) {
   return {
-    logining: state.user.isLogin
+    logining: state.user.isLogin,
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     login: (username, password) => dispatch(Actions.login(username, password)),
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Startup);
