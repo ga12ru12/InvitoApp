@@ -7,6 +7,7 @@ import Feed from '../screens/FeedScreen';
 import Settings from '../screens/SettingsScreen';
 import UserDetail from '../screens/UserDetailScreen';
 import Me from '../screens/MeScreen';
+import Login from '../screens/LoginScreen';
 
 const navigationAction = NavigationActions.navigate({
   routeName: 'Profile',
@@ -74,6 +75,9 @@ export const SettingsStack = StackNavigator({
 });
 
 export const Root = StackNavigator({
+  Login: {
+    screen: Login,
+  },
   Tabs: {
     screen: Tabs,
   },
