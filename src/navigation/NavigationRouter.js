@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'react-native';
-import { TabNavigator, StackNavigator, NavigationActions } from 'react-navigation';
-import { Icon } from 'react-native-elements';
+import { TabNavigator, StackNavigator } from 'react-navigation';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import Feed from '../screens/FeedScreen';
 import Settings from '../screens/SettingsScreen';
@@ -9,14 +9,6 @@ import UserDetail from '../screens/UserDetailScreen';
 import Me from '../screens/MeScreen';
 import Login from '../screens/LoginScreen';
 import Initial from '../screens/InitialScreen';
-
-const navigationAction = NavigationActions.navigate({
-  routeName: 'Profile',
-  params: {},
-
-  // navigate can have a nested navigate action that will be run inside the child router
-  action: NavigationActions.navigate({ routeName: 'SubProfileRoute'})
-})
 
 export const FeedStack = StackNavigator({
   Feed: {
@@ -51,7 +43,7 @@ export const Tabs = TabNavigator({
     navigationOptions: {
       tabBar: {
         label: 'Feed',
-        icon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />,
+        icon: ({ tintColor }) => <Icon name="ios-list" size={35} color={tintColor} />,
       },
     },
   },
@@ -60,7 +52,7 @@ export const Tabs = TabNavigator({
     navigationOptions: {
       tabBar: {
         label: 'Me',
-        icon: ({ tintColor }) => <Icon name="account-circle" size={35} color={tintColor} />,
+        icon: ({ tintColor }) => <Icon name="ios-person" size={35} color={tintColor} />,
       },
     },
   },
