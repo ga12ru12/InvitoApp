@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import {
   View,
   Image,
-  Text,
   TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FBSDK from 'react-native-fbsdk';
 import { NavigationActions } from 'react-navigation';
+import { Text } from '../components/Text';
 import styles from './style/LoginStyle';
 import InputRow from '../components/Input';
 import { Images } from '../themes';
@@ -81,6 +81,8 @@ class Startup extends Component {
   renderPassword() {
     return (
       <InputRow
+        labelColor="white"
+        icon="ios-lock-outline"
         type="PASSWORD"
         secureTextEntry
         value={this.state.password}
@@ -93,6 +95,8 @@ class Startup extends Component {
   renderUsername() {
     return (
       <InputRow
+        labelColor="white"
+        icon="ios-contact-outline"
         type="NAME"
         value={this.state.username}
         placeholder={I18n.t('enterName')}
@@ -104,7 +108,7 @@ class Startup extends Component {
   renderSigninButton() {
     return (
       <TouchableOpacity style={styles.loginButton} onPress={this.onLogin}>
-        <Text style={styles.textSignin}>
+        <Text color="white">
           {I18n.t('signin')}
         </Text>
       </TouchableOpacity>
@@ -114,7 +118,7 @@ class Startup extends Component {
   renderLoginFB() {
     return (
       <TouchableOpacity style={styles.loginButton}>
-        <Text style={styles.textSignin}>
+        <Text color="white">
           {I18n.t('loginFB')}
         </Text>
       </TouchableOpacity>
@@ -128,7 +132,7 @@ class Startup extends Component {
           {I18n.t('noAccount')}
         </Text>
         <TouchableOpacity>
-          <Text style={styles.signup}> {I18n.t('signUp')}</Text>
+          <Text style={styles.signupText}> {I18n.t('signUp')}</Text>
         </TouchableOpacity>
       </View>
     );

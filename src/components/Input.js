@@ -1,18 +1,19 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { View, StyleSheet, Dimensions, TextInput, Text } from 'react-native';
-import { Colors, Fonts } from '../themes';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { View, StyleSheet, Dimensions, TextInput } from 'react-native';
+import { Colors } from '../themes';
+import { SubTitle } from './Text';
 
 const { width } = Dimensions.get('window');
 const Input = (props) => {
   return (
     <View style={styles.loginRow}>
-      <Icon style={styles.icon} name="user-o" size={25} />
+      {props.icon && <Icon style={styles.icon} name={props.icon} size={30} />}
       <View style={styles.textColumn}>
-        <Text style={styles.textInfo}>{props.type}</Text>
+        <SubTitle color={props.labelColor}>{props.type}</SubTitle>
         <TextInput
-          style={styles.textInput}
           {...props}
+          style={styles.textInput}
         />
       </View>
     </View>
@@ -30,20 +31,18 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   icon: {
-    marginTop: 10,
+    marginTop: 5,
+    marginRight: 20,
     color: Colors.default,
   },
   textInfo: {
     marginLeft: 20,
     color: Colors.default,
-    fontSize: Fonts.size.meidum,
   },
   textInput: {
-    marginLeft: 20,
     height: 36,
     width,
     color: Colors.default,
-    fontSize: Fonts.size.medium,
   },
 });
 

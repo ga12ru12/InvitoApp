@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button } from 'react-native';
-import { TabNavigator, StackNavigator } from 'react-navigation';
+import { Button, Image, Text, View } from 'react-native';
+import { TabNavigator, StackNavigator, DrawerNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
-
+import ThumbNail from '../components/ThumbNail';
 import Feed from '../screens/FeedScreen';
 import Settings from '../screens/SettingsScreen';
 import UserDetail from '../screens/UserDetailScreen';
@@ -22,17 +22,15 @@ export const FeedStack = StackNavigator({
     screen: UserDetail,
     navigationOptions: {
       title: 'Profile',
+    },
+  },
+});
 
-      header: ({ dispatch }) => ({
-        // Render a button on the right side of the header
-        // When pressed switches the screen to edit mode.
-        right: (
-          <Button
-            title="Edit"
-            onPress={() =>console.log(dispatch)}
-          />
-        ),
-      }),
+export const ProfileStack = StackNavigator({
+  Profile: {
+    screen: Me,
+    navigationOptions: {
+      title: 'Profile',
     },
   },
 });
@@ -47,13 +45,14 @@ export const Tabs = TabNavigator({
       },
     },
   },
-  Me: {
-    screen: Me,
+  Profile: {
+    screen: ProfileStack,
     navigationOptions: {
       tabBar: {
         label: 'Me',
         icon: ({ tintColor }) => <Icon name="ios-person" size={35} color={tintColor} />,
       },
+      title: 'Profile',
     },
   },
 });

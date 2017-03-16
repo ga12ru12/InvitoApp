@@ -282,6 +282,7 @@
 		DF99C93F1E725EF00046D6BC /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Frameworks/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		DF99C9401E725EF00046D6BC /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = Frameworks/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		EECB9EB0DD594FA482C85308 /* libRCTFBSDK.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTFBSDK.a; sourceTree = "<group>"; };
+		F8E3F52E1E7A4FA200F1E7C8 /* Avenir.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Avenir.ttf; path = ../../../Downloads/Avenir.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -498,6 +499,7 @@
 			children = (
 				DF99C8AD1E7244320046D6BC /* Frameworks */,
 				DF99C8661E7165F30046D6BC /* FontAwesome.ttf */,
+				F8E3F52E1E7A4FA200F1E7C8 /* Avenir.ttf */,
 				DF99C8671E7165F30046D6BC /* Ionicons.ttf */,
 				DF99C8681E7165F30046D6BC /* MaterialIcons.ttf */,
 				13B07FAE1A68108700A75B9A /* BaseProject */,

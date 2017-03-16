@@ -17,6 +17,7 @@ const colors = {
   androidRippleColor: 'rgba(256, 256, 256, 0.3)',
   cardBorderColor: '#ccc',
   cardDefaultBg: '#fff',
+  grey: '#86939e',
 };
 
 export default colors;

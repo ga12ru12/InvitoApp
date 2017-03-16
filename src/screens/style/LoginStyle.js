@@ -25,14 +25,12 @@ export default StyleSheet.create({
   textInfo: {
     marginLeft: 20,
     color: Colors.default,
-    fontSize: Fonts.size.large,
   },
   textInput: {
     marginLeft: 20,
     height: 36,
     width,
     color: Colors.default,
-    fontSize: Fonts.size.large,
   },
   separator: {
     height: 2,
@@ -51,7 +49,6 @@ export default StyleSheet.create({
     borderColor: Colors.default,
   },
   textSignin: {
-    fontSize: Fonts.size.large,
     color: Colors.default,
   },
   signupText: {

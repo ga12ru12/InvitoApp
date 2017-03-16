@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Root } from './navigation/NavigationRouter';
+import { Root } from './navigation/NavigationRouterDrawer';
 
 class Base extends Component {
 

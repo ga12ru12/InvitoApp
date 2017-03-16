@@ -14,6 +14,10 @@ class Feed extends Component {
     });
   };
 
+  static navigationOptions = {
+    title: 'Profile!',
+  };
+
   render() {
     return (
       <ScrollView>
