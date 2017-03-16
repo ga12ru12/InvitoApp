@@ -1,0 +1,9 @@
+{
+	"NSCameraUsageDescription" = "Take photo, record video";
+  "NSLocationDescription" = "Get Location";
+  "NSMediaLibraryUsageDescription" = "Media library access";
+  "NSMicrophoneUsageDescription" = "Record audio";
+  "NSContactUsageDescription" = "Auto fill info from contact";
+  "NSPhotoLibraryUsageDescription" = "Photo library access";
+    
+}

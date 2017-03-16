@@ -11,7 +11,7 @@ import Login from '../screens/LoginScreen';
 import Initial from '../screens/InitialScreen';
 import DrawerComponent from './DrawerComponent';
 
-const DrawerIcon = ({ onPress }) => {
+export const DrawerIcon = ({ onPress }) => {
   return (
     <Icon name="ios-menu" color="#000" size={35} style={{ marginLeft: 16, marginTop: 3 }} onPress={onPress} />
   );
@@ -43,16 +43,6 @@ export const FeedStack = StackNavigator({
 export const ProfileStack = StackNavigator({
   Me: {
     screen: Me,
-    navigationOptions: {
-      title: 'Profile',
-      header: ({ state, setParams, navigate }) => ({
-        // Render a button on the right side of the header
-        // When pressed switches the screen to edit mode.
-        left: (
-          <DrawerIcon onPress={() => navigate('DrawerOpen')} />
-        ),
-      }),
-    },
   },
 });
 

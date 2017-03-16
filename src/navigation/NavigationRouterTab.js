@@ -35,26 +35,16 @@ export const ProfileStack = StackNavigator({
   },
 });
 
-export const Tabs = TabNavigator({
+export const Tabs = DrawerNavigator({
   Feed: {
     screen: FeedStack,
-    navigationOptions: {
-      tabBar: {
-        label: 'Feed',
-        icon: ({ tintColor }) => <Icon name="ios-list" size={35} color={tintColor} />,
-      },
-    },
   },
   Profile: {
     screen: ProfileStack,
-    navigationOptions: {
-      tabBar: {
-        label: 'Me',
-        icon: ({ tintColor }) => <Icon name="ios-person" size={35} color={tintColor} />,
-      },
-      title: 'Profile',
-    },
   },
+},
+{
+  drawerComponent: DrawerComponent
 });
 
 export const SettingsStack = StackNavigator({

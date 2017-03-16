@@ -179,6 +179,7 @@ const styles = StyleSheet.create({
 });
 
 export {
+  normalize,
   Text,
   H1,
   H2,

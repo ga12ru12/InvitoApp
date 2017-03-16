@@ -14,7 +14,6 @@ class ThumbNail extends PureComponent {
   }
 
   render() {
-    console.log(this.computeStyle())
     return (
       <Image style={[this.computeStyle(), this.props.style]} {...this.props} />
     );

@@ -17,6 +17,10 @@ I18n.translations = {
     noAccount: "DON'T HAVE ACCOUNT?",
     signUp: 'SIGN UP',
     loginFB: 'LOGIN VIA FACEBOOK',
+    selectAvatar: 'Select Avatar',
+    selectPhoto: 'Select photo from library',
+    takePhoto: 'Take photo ...',
+    cancel: 'Cancel',
   },
 
   vi: {

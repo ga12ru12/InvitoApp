@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import I18n from '../i18n/I18n';
+import { Images } from '../themes';
 
 export default class Avatar extends React.PureComponent {
 
@@ -21,7 +22,7 @@ export default class Avatar extends React.PureComponent {
       title: I18n.t('selectAvatar'),
       cancelButtonTitle: I18n.t('cancel'),
       takePhotoButtonTitle: I18n.t('takePhoto'),
-      chooseFromLibraryButtonTitle: I18n.t('choosefromLib'),
+      chooseFromLibraryButtonTitle: I18n.t('selectPhoto'),
       allowsEditing: true,
       quality: 1.0,
       maxWidth: 150,
@@ -53,11 +54,11 @@ export default class Avatar extends React.PureComponent {
   render() {
     return (
       <View style={[styles.container]}>
-        <TouchableOpacity onPress={this.selectPhotoTapped}>
+        <TouchableOpacity onPress={!this.props.disabled && this.selectPhotoTapped}>
           <View style={[styles.avatarContainer]}>
             <Image
               style={styles.avatar}
-              source={this.state.avatarSource}
+              source={this.state.avatarSource || Images.default_avatar}
             />
           </View>
         </TouchableOpacity>
@@ -67,8 +68,8 @@ export default class Avatar extends React.PureComponent {
 }
 
 Avatar.propTypes = {
-  image: React.PropTypes.string.isRequired,
-  setImage: React.PropTypes.func.isRequired,
+  image: React.PropTypes.string,
+  setImage: React.PropTypes.func,
 };
 
 const styles = StyleSheet.create({
@@ -82,9 +83,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   avatar: {
-    width: 150,
-    height: 150,
-    borderRadius: 75,
+    width: 100,
+    height: 100,
+    borderRadius: 50,
   },
   shadow: {
     backgroundColor: '#000000',

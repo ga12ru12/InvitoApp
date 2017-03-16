@@ -2,7 +2,8 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { View, StyleSheet, Dimensions, TextInput } from 'react-native';
 import { Colors } from '../themes';
-import { SubTitle } from './Text';
+import { normalize, SubTitle } from './Text';
+import fonts from '../themes/Fonts';
 
 const { width } = Dimensions.get('window');
 const Input = (props) => {
@@ -28,21 +29,19 @@ Input.propTypes = {
 const styles = StyleSheet.create({
   loginRow: {
     flexDirection: 'row',
-    padding: 20,
+    paddingVertical: 7,
   },
   icon: {
     marginTop: 5,
     marginRight: 20,
     color: Colors.default,
   },
-  textInfo: {
-    marginLeft: 20,
-    color: Colors.default,
-  },
   textInput: {
-    height: 36,
+    height: 40,
     width,
-    color: Colors.default,
+    fontSize: normalize(17),
+    fontFamily: fonts.fontFamily,
+    color: '#43484d',
   },
 });
 

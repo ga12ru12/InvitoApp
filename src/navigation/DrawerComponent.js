@@ -31,34 +31,23 @@ class DrawerView extends React.Component {
         </View>
         <Divider style={styles.serperator} />
         <DrawerRow
-          onPress={() => this.props.navigation.navigate("Profile")}
+          onPress={() => this.props.navigation.navigate("Feed")}
           label="Home"
           iconName="ios-home-outline"
         />
         <DrawerRow
-          label="Calender"
-          iconName="ios-home-outline"
-        />
-        <DrawerRow
-          label="OverView"
-          iconName="ios-home-outline"
-        />
-        <DrawerRow
-          label="Groups"
-          iconName="ios-home-outline"
-        />
-        <DrawerRow
-          label="Lists"
-          iconName="ios-home-outline"
+          onPress={() => this.props.navigation.navigate("Profile")}
+          label="Profile"
+          iconName="ios-contact-outline"
         />
         <Divider style={styles.serperator} />
         <DrawerRow
           label="Setting"
-          iconName="ios-home-outline"
+          iconName="ios-settings-outline"
         />
         <DrawerRow
           label="Logout"
-          iconName="ios-home-outline"
+          iconName="ios-exit-outline"
         />
       </View>
     );
