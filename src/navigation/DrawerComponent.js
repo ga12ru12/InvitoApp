@@ -25,7 +25,7 @@ class DrawerView extends React.Component {
         <View style={styles.profileContainer}>
           <ThumbNail source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}} />
           <View style={styles.margin}>
-            <H3 style={{ marginBottom: 2 }}>Janet Valdez</H3>
+            <H3>Janet Valdez</H3>
             <SubTitle>Jagasg@gmail.com</SubTitle>
           </View>
         </View>

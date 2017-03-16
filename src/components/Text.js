@@ -154,19 +154,16 @@ const styles = StyleSheet.create({
   h1: {
     fontSize: normalize(fonts.size.h1),
     fontFamily: fonts.fontFamily,
-    lineHeight: 32,
     color: '#43484d',
   },
   h2: {
     fontSize: normalize(fonts.size.h2),
     fontFamily: fonts.fontFamily,
-    lineHeight: 27,
     color: '#43484d',
   },
   h3: {
     fontSize: normalize(fonts.size.h3),
     fontFamily: fonts.fontFamily,
-    lineHeight: 22,
     color: '#43484d',
   },
   title: {
