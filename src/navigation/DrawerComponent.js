@@ -11,15 +11,26 @@ const DrawerRow = (props) => {
   return (
     <Touchable onPress={props.onPress}>
       <View style={styles.row}>
-        <Icon name={props.iconName} color="#86939e" size={30} style={styles.marginRight} />
-        <Text>{props.label}</Text>
+        <Icon name={props.iconName} color={props.isSelecting ? 'red' : "#86939e"} size={30} style={styles.marginRight} />
+        <Text color={props.isSelecting && 'red'}>{props.label}</Text>
       </View>
     </Touchable>
   );
 };
 
+function navigateScreen(navigation, screen) {
+  const { navigate, state } = navigation;
+  if (state.routes[state.index].routeName !== screen) {
+    navigate(screen);
+  } else {
+    navigate('DrawerClose');
+  }
+}
+
 class DrawerView extends React.Component {
   render() {
+    const { navigation } = this.props;
+    const currentScreen = navigation.state.routes[navigation.state.index].routeName;
     return (
       <View style={styles.container}>
         <View style={styles.profileContainer}>
@@ -31,12 +42,14 @@ class DrawerView extends React.Component {
         </View>
         <Divider style={styles.serperator} />
         <DrawerRow
-          onPress={() => this.props.navigation.navigate("Feed")}
+          isSelecting={currentScreen === 'Feed'}
+          onPress={() => navigateScreen(navigation, 'Feed')}
           label="Home"
           iconName="ios-home-outline"
         />
         <DrawerRow
-          onPress={() => this.props.navigation.navigate("Profile")}
+          isSelecting={currentScreen === 'Profile'}
+          onPress={() => navigateScreen(navigation, 'Profile')}
           label="Profile"
           iconName="ios-contact-outline"
         />
